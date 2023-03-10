@@ -1007,15 +1007,13 @@ function parse_playlist(playlist) {
 
 		function renderBreadcrumbs(path) {
 			var base = "",
-			$html = $('<div/ id="breadcrumb_div">').append( $('<a href=#Music_folder><img class="aquila" src="/Resources/aquila.png"></a></div>') );
+			$html = $('<div/ id="breadcrumb_div">').append( $('<a href=#><img class="aquila" src="/Resources/aquila.png"></a></div>') );
 			$.each(path.split('%2F'),function(k,v){
 				if(v) {
 					var v_as_text = decodeURIComponent(v);
-					if(v_as_text != "Music_folder"){
-						$html.append( $('<span/>').text(' ▸ ') )
-						.append( $('<a/>').attr('href','#'+base+v).text(v_as_text.replace('.m3u', "")) );
-						base += v + '%2F';
-					}
+					$html.append( $('<span/>').text(' ▸ ') )
+					.append( $('<a/>').attr('href','#'+base+v).text(v_as_text.replace('.m3u', "")) );
+					base += v + '%2F';
 				}
 			});
 			return $html;
